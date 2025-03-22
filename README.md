@@ -8,8 +8,7 @@ _Cosmo-r_ package leverage the power of _Pybliometrics_ python package to fetch 
 
 ** Provide a file with the column names necessary for this plugin**
 
-You first need to download Scopus data from _Pybliometrics_. We included in the documentation the various functions that we use to fetch articles and references with _Pybliometrics_
-For the curious, here is the documentation of pybliometrics ![Pybliometrics](pybliometrics.readthedocs.io). 
+You first need to download Scopus data from _Pybliometrics_. We included in the Pybliometrics_documentation file the various functions we use to fetch articles and references with _Pybliometrics_ package. For supplementary information, you can refer to Pybliometrics documentation ![Pybliometrics](pybliometrics.readthedocs.io). 
 
 
 ## Main functions
