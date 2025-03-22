@@ -1,14 +1,14 @@
 # cosmo-r
 
-This project his to make it easier to transform Scopus data into Cosmograph data that you can use in https://cosmograph.app/run/. 
+This project his to make it easier to transform Scopus data into Cosmograph data that you can use in ![cosmograph.app](https://cosmograph.app/run/). 
 
-This package leverage the power of pybliometrics python package. You first need to download Scopus data from pybliometrics to use this cosmo-r package. For the curious, here is the documentation of pybliometrics (pybliometrics.readthedocs.io). 
+This package leverage the power of pybliometrics python package. You first need to download Scopus data from pybliometrics to use this cosmo-r package. For the curious, here is the documentation of pybliometrics ![Pybliometrics](pybliometrics.readthedocs.io). 
 
 Here are the functions we use to retrieve citing and cited documents
 
 
 
-To get articles informations : 
+To get articles information : 
 ``` python
 result_list = []  # Initialize an empty list to store results
 
