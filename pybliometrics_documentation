@@ -1,0 +1,41 @@
+To get articles information : 
+``` python
+result_list = []  # Initialize an empty list to store results
+
+  
+# Assuming result.chunk is an iterable (e.g., a list of queries or DOIs)
+
+for query_item in result.chunk:
+    pybliometrics.scopus.init()
+    query = f"{query_item}"  # Use f-string for cleaner code
+    print(query)
+
+    s = ScopusSearch(query, verbose=True, subscriber=True, view="COMPLETE")
+    df = pd.DataFrame(s.results)  # Add the results of each query to result_list
+    result_list.append(df)  # Append each df to result_list
+
+final_df = pd.concat(result_list, ignore_index=True)
+final_df.to_csv("YOUR_PATH")
+```
+
+
+To get references informations : 
+``` python 
+def fetch_references(eid):
+    try:
+        ref_query = AbstractRetrieval(eid, id_type="eid", view="REF")
+        if ref_query.references:
+            return [{"id": ref.id, "source_eid": eid, "cited_year": ref.coverDate, "cited_journal" : ref.sourcetitle} for ref in ref_query.references]
+
+    except Exception as e:
+        print(f"Error processing EID {eid}: {e}")
+    return []
+```
+
+Hence, the following function enable us to add the eid of the citing document the its the list of the documents its cited documents : 
+
+You might wonder what is the difference between unique identifier eid for articles and id for references. 
+- Eid : **2-s 2.0-84929582121**
+- Id : ~~2-s 2.0-~~**84929582121**
+
+Hence, for standardisation, we will remove the `2-s 2.0-` of EID from citing documents to get comparable unique identifiers. 
