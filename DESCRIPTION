@@ -16,7 +16,5 @@ Description: This package is intended at simplifying network compatibility with 
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-
-	
-	
-	
+URL: https://github.com/JacobHamelMottiez/cosmo
+BugReports: https://github.com/JacobHamelMottiez/cosmo/issues
