@@ -78,3 +78,5 @@ plot(
   main = "Bibliographic Coupling Network"
 )
 
+library(devtools)
+use_git()
