@@ -1,0 +1,22 @@
+Package: cosmo
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Authors@R: c(
+    person(
+      "Jacob", "Hamel-Mottiez",
+      email = "jacob.hamel-mottiez.1@ulaval.ca",
+      role = c("aut", "cre")
+    )
+  )
+Description: This package is intended at simplifying network compatibility with Cosmograph.app.
+    Cosmograph.app is a website that let you render efficiently graphs in a dynamic fashion. It
+    is also possible to conduct data analysis in it. For now, this package only support data from Scopus API via pybliometrics in 
+    Python. 
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+
+	
+	
+	
