@@ -80,3 +80,4 @@ plot(
 
 library(devtools)
 use_github()
+use_git()
