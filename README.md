@@ -1,56 +1,19 @@
 # cosmo-r
 ![b9de9fa3-6e38-47f7-85c4-d45a87e3ce59](https://github.com/user-attachments/assets/7c66e0a4-887e-4fdc-a709-ee4a47166099)
 
-This project his to make it easier to transform Scopus data into Cosmograph data that you can use in ![cosmograph.app](https://cosmograph.app/run/). 
+## Package introduction
+This project goal his to make it easier to transform Scopus data into Cosmograph.app visualisation that you can use ![here](https://cosmograph.app/run/). 
 
-This package leverage the power of pybliometrics python package. You first need to download Scopus data from pybliometrics to use this cosmo-r package. For the curious, here is the documentation of pybliometrics ![Pybliometrics](pybliometrics.readthedocs.io). 
+_Cosmo-r_ package leverage the power of _Pybliometrics_ python package to fetch articles, references and more generally, all the metadata that we may need. We use _Pybliometrics_ instead of _R-Scopus_ for various reason, mainly the fact that it is easier to deal with bigger dataset with the former. However, if you work with R-Scopus, you will be able to use this package given that you use the same column title as we do. 
 
+** Provide a file with the column names necessary for this plugin**
+
+You first need to download Scopus data from _Pybliometrics_. We included in the documentation the various functions that we use to fetch articles and references with _Pybliometrics_
+For the curious, here is the documentation of pybliometrics ![Pybliometrics](pybliometrics.readthedocs.io). 
+
+
+## Main functions
 Here are the functions we use to retrieve citing and cited documents
-
-
-
-To get articles information : 
-``` python
-result_list = []  # Initialize an empty list to store results
-
-  
-# Assuming result.chunk is an iterable (e.g., a list of queries or DOIs)
-
-for query_item in result.chunk:
-    pybliometrics.scopus.init()
-    query = f"{query_item}"  # Use f-string for cleaner code
-    print(query)
-
-    s = ScopusSearch(query, verbose=True, subscriber=True, view="COMPLETE")
-    df = pd.DataFrame(s.results)  # Add the results of each query to result_list
-    result_list.append(df)  # Append each df to result_list
-
-final_df = pd.concat(result_list, ignore_index=True)
-final_df.to_csv("YOUR_PATH")
-
-```
-
-
-To get references informations : 
-``` python 
-def fetch_references(eid):
-    try:
-        ref_query = AbstractRetrieval(eid, id_type="eid", view="REF")
-        if ref_query.references:
-            return [{"id": ref.id, "source_eid": eid, "cited_year": ref.coverDate, "cited_journal" : ref.sourcetitle} for ref in ref_query.references]
-
-    except Exception as e:
-        print(f"Error processing EID {eid}: {e}")
-    return []
-```
-
-Hence, the following function enable us to add the eid of the citing document the its the list of the documents its cited documents : 
-
-You might wonder what is the difference between unique identifier eid for articles and id for references. 
-- Eid : **2-s 2.0-84929582121**
-- Id : ~~2-s 2.0-~~**84929582121**
-
-Hence, for standardisation, we will remove the `2-s 2.0-` of EID from citing documents to get comparable unique identifiers. 
 
 We now have all the relevant information to do network analysis. 
 For now, this package focus on two classic methods in bibliometrics : bibliographic coupling and cocitation coupling. 
