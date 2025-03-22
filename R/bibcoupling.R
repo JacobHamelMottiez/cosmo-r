@@ -79,7 +79,7 @@ build_bibcoupling_network <- function(refs) {
   return(bib_coupling_graph)
 }
 
-extract_network_data_test <- function(g, refs, arts, palette_func = viridis::viridis, palette_option = "A") {
+extract_network_data <- function(g, refs, arts, palette_func = viridis::viridis, palette_option = "A") {
   library(dplyr)
   library(igraph)
 
