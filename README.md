@@ -1,4 +1,5 @@
 # cosmo-r
+![b9de9fa3-6e38-47f7-85c4-d45a87e3ce59](https://github.com/user-attachments/assets/7c66e0a4-887e-4fdc-a709-ee4a47166099)
 
 This project his to make it easier to transform Scopus data into Cosmograph data that you can use in ![cosmograph.app](https://cosmograph.app/run/). 
 
