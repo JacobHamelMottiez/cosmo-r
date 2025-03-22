@@ -11,28 +11,31 @@ _Cosmo-r_ package leverage the power of _Pybliometrics_ python package to fetch 
 You first need to download Scopus data from _Pybliometrics_. We included in the Pybliometrics_documentation file the various functions we use to fetch articles and references with _Pybliometrics_ package. For supplementary information, you can refer to Pybliometrics documentation ![Pybliometrics](pybliometrics.readthedocs.io). 
 
 
-## Main functions
-Here are the functions we use to retrieve citing and cited documents
+## Main functions of cosmo-r
+For now, this package focus on two classic methods used in bibliometric analysis: bibliographic coupling and cocitation coupling. 
+Our functions do the following : 
+1. Create a graph based on citing and cited unique identifiers provided by Scopus.
+2. Create clusters based on nodes connections between each other (for now, we only provide support for Louvain algorithm. In the future, we plan to integrate Leiden and other well-known clustering algorithm).
+3. Add informations for visualisation purpose in _Cosmograph.app_ such as : 
+	- Node information : 
+		- Node Cluster Id ; 
+		- Node Cluster Color ; 
+		- Node Weight.
+	- Edge information : 
+		- From ;  
+		- To ; 
+		- Edge weight ; 
+		- Edge Color.
+4. Create two .csv files needed for visualisation in _cosmograph.app_. 
 
-We now have all the relevant information to do network analysis. 
-For now, this package focus on two classic methods in bibliometrics : bibliographic coupling and cocitation coupling. 
+Here is an example of how to use the plugin. Below, you will find the functions described through points 1-4 : 
 
-Many informations will be needed for visualisation in Cosmograph.app : 
-- Node information : 
-	- Node Cluster Id ; 
-	- Node Cluster Color ; 
-	- Node Weight ; 
-- Edge information : 
-	- From ;  
-	- To ; 
-	- Edge weight ; 
-	- Edge Color ; 
-
-Here is the code that enable us to get two .csv files that needed, one for nodes information, the other for edges information : 
-
-Here is an example of how to use the plugin. Below, you will find the functions used for this particular example : 
+### Example
+---
 ```r
 dir <- "YOUR_DIR"
+
+# Example with personal data from philosophy of biology. 
 arts <- read_csv(paste0(dir, "ARTICLES_SPECIAL_PHILO_BIO.csv"))
 refs <- read_csv(paste0(dir, "REFERENCES_SPECIAL_PHILO_BIO.csv"))
 
@@ -41,9 +44,29 @@ z <- cosmo::extract_network_louvain(g = x, refs = refs, arts = arts, palette_fun
 cosmo::save_network_data(z,dir)
 ```
 
+### Bibliographic coupling 
+---
+```r
+build_bibcoupling_network <- function(refs) {
+  library(igraph)
+  library(dplyr)
+
+  refs <- refs |> select(citing_id, cited_id)
+
+  # Step 1: Create an initial graph (undirected, as we are interested in bibliographic coupling)
+
+  # Compute bibliographic coupling (shared references count)
+  bib_coupling_matrix <- refs %>%
+    inner_join(refs, by = "cited_id") %>%
+    filter(citing_id.x != citing_id.y) %>%
+    count(citing_id.x, citing_id.y, name = "weight")
+
+  # Create a bibliographic coupling network
+  bib_coupling_graph <- graph_from_data_frame(bib_coupling_matrix, directed = FALSE)
+```
+
 ### Cocitation coupling 
 ---
-
 ```r
 #' Build cocitation network
 #'
@@ -66,19 +89,15 @@ build_cocitation_network <- function(refs) {
   graph_from_data_frame(cocitation_df, directed = FALSE)
 }
 ```
-
-### Cluster louvain
+### Clustering and Network information 
+---
 ```r
-#' Generate node and edge data with Louvain community detection
-#'
-#' @param g An igraph object
-#' @param refs Original reference data to merge back citation details
-#' @return A list with node and edge data including Louvain communities and colors
-#' @export
-extract_network_louvain <- function(g, refs, palette_func = viridis::viridis, palette_option = NULL, scale_weight = 3) {
+extract_network_data <- function(g, refs, palette_func = viridis::viridis, palette_option = "A") {
   library(dplyr)
+  library(igraph)
 
-  E(g)$weight <- E(g)$weight^scale_weight
+
+  E(g)$weight <- E(g)$weight^3
   louvain <- cluster_louvain(g, resolution = 1)
 
   V(g)$community <- membership(louvain)
