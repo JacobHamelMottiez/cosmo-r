@@ -14,20 +14,6 @@
 #   Test Package:              'Ctrl + Shift + T'
 
 
-
-#' Load bibliographic data
-#'
-#' @param dir Path to the data directory
-#' @return A list with articles and references data
-#' @export
-load_data <- function(dir) {
-  library(readr)
-  list(
-    articles = read_csv(file.path(dir, "ARTICLES_SPECIAL_PHILO_BIO.csv")),
-    references = read_csv(file.path(dir, "REFERENCES_SPECIAL_PHILO_BIO.csv"))
-  )
-}
-
 #' Build cocitation network
 #'
 #' @param refs Data frame of references
@@ -90,30 +76,6 @@ extract_network_data <- function(g, refs, palette_func = viridis::viridis, palet
 
   list(nodes = node_data, edges = edge_data)
 }
-
-
-
-#' Change node and edge colors
-#'
-#' @param node_data Data frame of nodes
-#' @param edge_data Data frame of edges
-#' @param palette_func Function to generate a color palette (e.g., viridis::viridis, scico::scico, RColorBrewer::brewer.pal)
-#' @param palette_option Palette option for the chosen function (if applicable)
-#' @return A list with updated node and edge colors
-#' @export
-change_network_colors <- function(node_data, edge_data, palette_func = scico::scico, palette_option = "hawaii") {
-  library(dplyr)
-
-  unique_communities <- unique(node_data$community)
-  palette <- palette_func(n = length(unique_communities), palette = palette_option)
-  community_colors <- setNames(palette, unique_communities)
-
-  node_data <- node_data |> mutate(node_color = community_colors[as.character(community)])
-  edge_data <- edge_data |> mutate(edge_color = community_colors[as.character(from)])
-
-  list(nodes = node_data, edges = edge_data)
-}
-
 
 
 #' Save network data to CSV
