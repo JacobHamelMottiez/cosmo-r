@@ -16,21 +16,15 @@ result_list = []  # Initialize an empty list to store results
 # Assuming result.chunk is an iterable (e.g., a list of queries or DOIs)
 
 for query_item in result.chunk:
-
     pybliometrics.scopus.init()
-
     query = f"{query_item}"  # Use f-string for cleaner code
-
     print(query)
 
     s = ScopusSearch(query, verbose=True, subscriber=True, view="COMPLETE")
-
     df = pd.DataFrame(s.results)  # Add the results of each query to result_list
-
     result_list.append(df)  # Append each df to result_list
 
 final_df = pd.concat(result_list, ignore_index=True)
-
 final_df.to_csv("YOUR_PATH")
 
 ```
@@ -39,19 +33,13 @@ final_df.to_csv("YOUR_PATH")
 To get references informations : 
 ``` python 
 def fetch_references(eid):
-
     try:
-
         ref_query = AbstractRetrieval(eid, id_type="eid", view="REF")
-
         if ref_query.references:
-
             return [{"id": ref.id, "source_eid": eid, "cited_year": ref.coverDate, "cited_journal" : ref.sourcetitle} for ref in ref_query.references]
 
     except Exception as e:
-
         print(f"Error processing EID {eid}: {e}")
-
     return []
 ```
 
@@ -89,7 +77,6 @@ x <- cosmo::build_cocitation_network(refs_spec_philo_bio)
 z <- cosmo::extract_network_louvain(g = x, refs = refs, arts = arts, palette_func = scico,  palette_option = "hawaii")
 cosmo::save_network_data(z,dir)
 ```
-
 
 ### Cocitation coupling 
 ---
