@@ -49,7 +49,10 @@ cosmo::save_network_data(z,dir)
 ```
 
 # What can you achieve with cosmograph.app visualisations? 
+##_You can use it as a first step towards visualising communities_
 ![Screenshot 2024-10-31 145249](https://github.com/user-attachments/assets/2d68e066-5970-4571-81d3-fdf337ff0fd5)
+
+##_You can use it to visualize links between documents_
 ![Screenshot 2024-10-12 150226](https://github.com/user-attachments/assets/8f35aacd-2f83-428f-9578-fd578180400c)
 ## _You can isolate clusters_
 ![Screenshot 2025-02-25 204355](https://github.com/user-attachments/assets/776f6995-6833-40d5-83c0-77ecd2b1360e)
