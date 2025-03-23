@@ -1,3 +1,4 @@
+```r
 #' Clean bibliographic references
 #'
 #' This function cleans and processes bibliographic reference data.
@@ -24,3 +25,4 @@ clean_references_fct <- function(references) {
     distinct()
   return(references)
 }
+```
