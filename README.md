@@ -31,7 +31,6 @@ Our functions do the following :
 Here is an example of how to use the plugin. Below, you will find the functions described through points 1-4 : 
 
 ### Example
----
 ```r
 dir <- "YOUR_DIR"
 
