@@ -1,1 +1,30 @@
+#' Clean bibliographic references
+#'
+#' This function cleans and processes bibliographic reference data.
+#' It standardizes the source title and extracts relevant fields.
+#'
+#' @param references A dataframe of references
+#' @return A cleaned dataframe with formatted citations
+#' @export
+clean_articles_fct  <- function(references) {
+  
 
+
+clean_references_fct <- function(references) {
+  references$sourcetitle <- toupper(references$sourcetitle)
+  references <- references %>%
+    rename(cited_id = id, citing_id = citing_eid, cited_title = sourcetitle) %>%
+    mutate(citing_id = str_extract(citing_id, "(?<=2-s2\\.0-)[0-9]+")) %>%
+    rename(cited_year = publicationyear)
+
+  references <- references %>%
+    group_by(cited_id) %>%
+    mutate(
+      title = most_common(title),
+      sourcetitle = most_common(authors),
+      publicationyear = most_common(cited_year)
+    ) %>%
+    ungroup() %>%
+    distinct()
+  return(references)
+}
