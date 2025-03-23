@@ -14,8 +14,8 @@ You first need to download Scopus data from _Pybliometrics_. We included in the 
 ## Main functions of cosmo-r
 For now, this package focus on two classic methods used in bibliometric analysis: bibliographic coupling and cocitation coupling. 
 Our functions do the following : 
-1. Create a graph based on citing and cited unique identifiers provided by Scopus.
-2. Create clusters based on nodes connections between each other (for now, we only provide support for Louvain algorithm. In the future, we plan to integrate Leiden and other well-known clustering algorithm).
+1. Create a graph based on citing and cited unique identifiers provided by Scopus (build_cocitation_network(refs)).
+2. Create clusters based on nodes connections between each other (for now, we only provide support for Louvain algorithm. In the future, we plan to integrate Leiden and other well-known clustering algorithm) (extract_network_louvain(graph, refs, arts, palette_func, palette_option).
 3. Add informations for visualisation purpose in _Cosmograph.app_ such as : 
 	- Node information : 
 		- Node Cluster Id ; 
@@ -26,7 +26,7 @@ Our functions do the following :
 		- To ; 
 		- Edge weight ; 
 		- Edge Color.
-4. Create two .csv files needed for visualisation in _cosmograph.app_. 
+4. Save two .csv files needed for visualisation in _cosmograph.app_ save_network_data (graph, dir). 
 
 Here is an example of how to use the plugin. Below, you will find the functions described through points 1-4 : 
 
