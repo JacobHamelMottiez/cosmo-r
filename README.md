@@ -26,7 +26,7 @@ Our functions do the following :
 
 Here is an example of how to use the plugin. Below, you will find the functions described through points 1-4 : 
 
-### Example
+### How to use the package? A simple example
 ```r
 # PACKAGES
 library(igraph)
@@ -48,6 +48,10 @@ z <- cosmo::extract_network_louvain(g = x, refs = refs, arts = arts, palette_fun
 cosmo::save_network_data(z,dir)
 ```
 
-# Some personal visualisation using Cosmograph.app
+# What can you achieve with cosmograph.app visualisations? 
 ![Screenshot 2024-10-31 145249](https://github.com/user-attachments/assets/2d68e066-5970-4571-81d3-fdf337ff0fd5)
 ![Screenshot 2024-10-12 150226](https://github.com/user-attachments/assets/8f35aacd-2f83-428f-9578-fd578180400c)
+## _You can isolate clusters_
+![Screenshot 2025-02-25 204355](https://github.com/user-attachments/assets/776f6995-6833-40d5-83c0-77ecd2b1360e)
+## _You can create and interact with a timeline_
+![Screenshot 2025-03-10 141518](https://github.com/user-attachments/assets/b4953c99-ff42-4d66-ae9d-b611c82d54bf)
