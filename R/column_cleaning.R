@@ -30,7 +30,7 @@ reformat_references <- function(references) {
   return(references)
 }
 
-Clean_references_fct <- function(references) {
+clean_references_fct <- function(references) {
   references <- reformat_references(references)
   references <- references %>%
     group_by(cited_id) %>%
