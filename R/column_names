@@ -1,3 +1,66 @@
+# Citing document column names 
+- `eid`
+- `doi`  
+- `pii`  
+- `pubmed_id`  
+- `title`  
+- `subtype`  
+- `subtypeDescription`  
+- `creator`  
+- `afid`  
+- `affilname`  
+- `affiliation_city`  
+- `affiliation_country`  
+- `author_count`  
+- `author_names`  
+- `author_ids`  
+- `author_afids`  
+- `coverDate`  
+- `coverDisplayDate`  
+- `publicationName`  
+- `issn`  
+- `source_id`  
+- `eIssn`  
+- `aggregationType`  
+- `volume`  
+- `issueIdentifier`  
+- `article_number`  
+- `pageRange`  
+- `description`  
+- `authkeywords`  
+- `citedby_count`  
+- `openaccess`  
+- `freetoread`  
+- `freetoreadLabel`  
+- `fund_acr`  
+- `fund_no`  
+- `fund_sponsor`  
+
+# Cited document column names 
+- `position`  
+- `id`  
+- `doi`  
+- `title`  
+- `authors`  
+- `authors_auid`  
+- `authors_affiliationid`  
+- `sourcetitle`  
+- `publicationyear`  
+- `coverDate`  
+- `volume`  
+- `issue`  
+- `first`  
+- `last`  
+- `citedbycount`  
+- `type`  
+- `text`  
+- `fulltext`  
+- `citing_eid` (this column was added when querying for each articles. see Pybliometrics documentations)
+
+# How do we transform these columns?
+As you see, our link between citing and cited is created by eid and citing_eid. You will find our column cleaning process 
+in 
+
 #' Clean bibliographic references
 #'
 #' This function cleans and processes bibliographic reference data.
@@ -24,4 +87,4 @@ clean_references_fct <- function(references) {
     distinct()
   return(references)
 }
-```
+
