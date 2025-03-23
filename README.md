@@ -28,12 +28,21 @@ Here is an example of how to use the plugin. Below, you will find the functions 
 
 ### Example
 ```r
+# PACKAGES
+library(igraph)
+library(dplyr)
+library(tidyverse)
+library(tidygraph)
+library(data.table)
+library(scico)
+
 dir <- "YOUR_DIR"
 
-# Example with personal data from philosophy of biology. 
+# DATA (Example with personal data from philosophy of biology) 
 arts <- read_csv(paste0(dir, "ARTICLES_SPECIAL_PHILO_BIO.csv"))
 refs <- read_csv(paste0(dir, "REFERENCES_SPECIAL_PHILO_BIO.csv"))
 
+# FUNCTIONS
 x <- cosmo::build_cocitation_network(refs_spec_philo_bio)
 z <- cosmo::extract_network_louvain(g = x, refs = refs, arts = arts, palette_func = scico,  palette_option = "hawaii")
 cosmo::save_network_data(z,dir)
