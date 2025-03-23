@@ -47,3 +47,7 @@ x <- cosmo::build_cocitation_network(refs_spec_philo_bio)
 z <- cosmo::extract_network_louvain(g = x, refs = refs, arts = arts, palette_func = scico,  palette_option = "hawaii")
 cosmo::save_network_data(z,dir)
 ```
+
+# Some personal visualisation using Cosmograph.app
+![Screenshot 2024-10-31 145249](https://github.com/user-attachments/assets/2d68e066-5970-4571-81d3-fdf337ff0fd5)
+![Screenshot 2024-10-12 150226](https://github.com/user-attachments/assets/8f35aacd-2f83-428f-9578-fd578180400c)
