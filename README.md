@@ -2,14 +2,11 @@
 ![b9de9fa3-6e38-47f7-85c4-d45a87e3ce59](https://github.com/user-attachments/assets/7c66e0a4-887e-4fdc-a709-ee4a47166099)
 
 ## Package introduction
-This project goal his to make it easier to transform Scopus data into Cosmograph.app visualisation that you can use ![here](https://cosmograph.app/run/). 
+This project goal his to make it easier to transform Scopus data into ![Cosmograph.app visualisation](https://cosmograph.app/run/). 
 
-_Cosmo-r_ package leverage the power of _Pybliometrics_ python package to fetch articles, references and more generally, all the metadata that we may need. We use _Pybliometrics_ instead of _R-Scopus_ for various reason, mainly the fact that it is easier to deal with bigger dataset with the former. However, if you work with R-Scopus, you will be able to use this package given that you use the same column title as we do. 
+_Cosmo-r_ package leverage the power of _Pybliometrics_ python package that help us interacting with various Scopus APIs. One way wonder why we use _Pybliometrics_ instead of _R-Scopus_. The main justification for it is easier to deal with bigger dataset with the former. However, if you work with R-Scopus, you will be able to use this package given that you use the same column title as we do. See `column_names` file to reformat your data so it is compatible with this plugin. 
 
-** Provide a file with the column names necessary for this plugin**
-
-You first need to download Scopus data from _Pybliometrics_. We included in the Pybliometrics_documentation file the various functions we use to fetch articles and references with _Pybliometrics_ package. For supplementary information, you can refer to Pybliometrics documentation ![Pybliometrics](pybliometrics.readthedocs.io). 
-
+You first need to download Scopus data from _Pybliometrics_. We included in the Pybliometrics_functions.ipynb notebook that contains the various functions we use to fetch citing and cited documents. For supplementary information, you can refer to Pybliometrics documentation ![Pybliometrics](pybliometrics.readthedocs.io). 
 
 ## Main functions of cosmo-r
 For now, this package focus on two classic methods used in bibliometric analysis: bibliographic coupling and cocitation coupling. 
