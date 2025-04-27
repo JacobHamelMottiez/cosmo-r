@@ -2,7 +2,7 @@
 ![b9de9fa3-6e38-47f7-85c4-d45a87e3ce59](https://github.com/user-attachments/assets/7c66e0a4-887e-4fdc-a709-ee4a47166099)
 
 ## Package introduction
-This project goal his to make it easier to transform Scopus data into ![Cosmograph.app visualisation](https://cosmograph.app/run/). 
+This project goal his to make it easier to transform Scopus data into [Cosmograph.app visualisation](https://cosmograph.app/run/). 
 
 _Cosmo-r_ package leverage the power of _Pybliometrics_ python package that help us interacting with various Scopus APIs. One way wonder why we use _Pybliometrics_ instead of _R-Scopus_. The main justification for it is easier to deal with bigger dataset with the former. However, if you work with R-Scopus, you will be able to use this package given that you use the same column title as we do. See `column_names` file to reformat your data so it is compatible with this plugin. 
 
