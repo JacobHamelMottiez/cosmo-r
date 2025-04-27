@@ -6,7 +6,7 @@ This project goal his to make it easier to transform Scopus data into [Cosmograp
 
 _Cosmo-r_ package leverage the power of _Pybliometrics_ python package that help us interacting with various Scopus APIs. One way wonder why we use _Pybliometrics_ instead of _R-Scopus_. The main justification for it is easier to deal with bigger dataset with the former. However, if you work with R-Scopus, you will be able to use this package given that you use the same column title as we do. See `column_names` file to reformat your data so it is compatible with this plugin. 
 
-You first need to download Scopus data from _Pybliometrics_. We included in the Pybliometrics_functions.ipynb notebook that contains the various functions we use to fetch citing and cited documents. For supplementary information, you can refer to Pybliometrics documentation ![Pybliometrics](pybliometrics.readthedocs.io). 
+You first need to download Scopus data from _Pybliometrics_. We included in the Pybliometrics_functions.ipynb notebook that contains the various functions we use to fetch citing and cited documents. For supplementary information, you can refer to Pybliometrics documentation [Pybliometrics](pybliometrics.readthedocs.io). 
 
 ## Main functions of cosmo-r
 For now, this package focus on two classic methods used in bibliometric analysis: bibliographic coupling and cocitation coupling. 
