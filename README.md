@@ -43,9 +43,9 @@ arts <- read_csv(paste0(dir, "ARTICLES_SPECIAL_PHILO_BIO.csv"))
 refs <- read_csv(paste0(dir, "REFERENCES_SPECIAL_PHILO_BIO.csv"))
 
 # FUNCTIONS
-x <- cosmo::build_cocitation_network(refs_spec_philo_bio)
-z <- cosmo::extract_network_louvain(g = x, refs = refs, arts = arts, palette_func = scico,  palette_option = "hawaii")
-cosmo::save_network_data(z,dir)
+cocit_graph <- cosmo::build_cocitation_network(refs_spec_philo_bio)
+extract_graph_data <- cosmo::extract_network_louvain(g = cocit_graph, refs = refs, arts = arts, palette_func = scico,  palette_option = "hawaii")
+cosmo::save_network_data(extract_graph_data, dir)
 ```
 
 # What can you achieve with cosmograph.app visualisations? 
