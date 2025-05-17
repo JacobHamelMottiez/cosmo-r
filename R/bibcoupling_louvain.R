@@ -1,10 +1,4 @@
 # Load required libraries
-library(igraph)
-library(dplyr)
-library(tidyverse)
-library(tidygraph)
-library(data.table)
-library(scico)
 
 
 #' Find the most common value in a vector
@@ -15,6 +9,14 @@ library(scico)
 #' @return The most common value in the vector
 #' @export
 most_common <- function(x) {
+
+  library(igraph)
+  library(dplyr)
+  library(tidyverse)
+  library(tidygraph)
+  library(data.table)
+  library(scico)
+
   if (all(is.na(x))) return(NA)  # Handle all NA cases
   x[which.max(tabulate(match(x, unique(x))))]  # Find most frequent value
 }
@@ -56,6 +58,7 @@ clean_references_fct <- function(references) {
 #' @param refs A dataframe of bibliographic coupling data
 #' @return A list containing cleaned and filtered data
 #' @export
+
 build_bibcoupling_network <- function(refs) {
   library(igraph)
   library(dplyr)
@@ -125,7 +128,10 @@ extract_network_data <- function(g, refs, arts, palette_func = viridis::viridis,
 #' @param dir Output directory
 #' @export
 save_network_data <- function(data, dir) {
-  write_csv(data$nodes, file.path(dir, "nodes.csv"))
-  write_csv(data$edges, file.path(dir, "edges.csv"))
+  tidyverse::write_csv(data$nodes, file.path(dir, "nodes.csv"))
+  tidyverse::write_csv(data$edges, file.path(dir, "edges.csv"))
 }
+
+
+
 
