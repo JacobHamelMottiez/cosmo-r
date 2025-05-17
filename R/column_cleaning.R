@@ -29,6 +29,12 @@ reformat_references <- function(references) {
                        cited_title = sourcetitle,
                        cited_year = publicationyear)
 
-  references <- references |> mutate(citing_id = str_extract(citing_id, "(?<=2-s2\\.0-)[0-9]+"))
+  references <- references |> mutate(citing_id = str_extract(citing_id, "(?<=2-s2\\.)[0-9]+"))
   return(references)
 }
+
+library(tidyverse)
+data <- read_csv("data/gpt_articles_dataset.csv")
+save(data, file = "data/gpt_articles_dataset.RData")
+
+getwd()

@@ -1,9 +1,9 @@
 id,citing_eid,sourcetitle,publicationyear
-101,1,Journal of Bioethics,2022
-102,2,Journal of Biology,2020
-103,3,Philosophy of Science,2021
-104,4,Biology and Philosophy,2019
-105,5,Science Reports,2022
-106,1,Journal of Bioethics,2021
-107,3,Philosophy of Science,2021
-108,4,Biology and Philosophy,2020
+101,2-s2.1,Journal of Biology,2022
+101,2-s2.2,Journal of Biology,2020
+104,2-s2.3,Biology and Philosophy,2021
+104,2-s2.4,Biology and Philosophy,2019
+105,2-s2.5,Science Reports,2022
+106,2-s2.1,Journal of Bioethics,2021
+107,2-s2.3,Philosophy of Science,2021
+108,2-s2.4,Biology and Philosophy,2020
