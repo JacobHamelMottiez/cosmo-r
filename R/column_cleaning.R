@@ -3,9 +3,12 @@
 #' This function cleans and processes bibliographic reference data.
 #' It standardizes the source title and extracts relevant fields.
 #'
-#' @param references A dataframe of references
+#' @param articles A dataframe of articles
+#'
 #' @return A cleaned dataframe with formatted citations
 #' @export
+#'
+#'
 reformat_articles  <- function(articles) {
   articles <- rename(arts,
                      citing_id = eid,
