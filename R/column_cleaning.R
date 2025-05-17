@@ -7,14 +7,14 @@
 #' @return A cleaned dataframe with formatted citations
 #' @export
 reformat_articles  <- function(articles) {
-  articles <- rename(articles,
+  articles <- rename(arts,
                      citing_id = eid,
                      citing_journal = publicationName,
                      citing_authors = authors_names,
                      citing_year = coverDate,
                      citing_title = title,
                      citing_doi = doi)
-  articles <- articles |> str_extract(citing_id, "(?<=2-s2\\.0-)[0-9]+")
+  articles <- articles |> mutate(citing_id = str_extract(citing_id, "(?<=2-s2\\.)[0-9]+"))
   return(articles)
 }
 
