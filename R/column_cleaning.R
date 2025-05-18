@@ -8,7 +8,8 @@
 #' @return A cleaned dataframe with formatted citations
 #' @export
 #'
-#'
+library(tidyverse)
+
 reformat_articles  <- function(articles) {
   articles <- rename(arts,
                      citing_id = eid,

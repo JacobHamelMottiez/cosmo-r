@@ -21,9 +21,10 @@
 #' @export
 
 
-build_cocitation_network <- function(refs, min_n) {
+build_cocitation_network <- function(refs1, min_n) {
 
-  refs <- cosmoR::reformat_references(refs)
+
+  refs <- cosmoR::reformat_references(refs1)
   refs <- clean_references_fct(refs)
 
 
@@ -76,12 +77,12 @@ extract_network_data <- function(g, refs, palette_func = viridis::viridis, palet
     mutate(edge_weight = E(g)$weight,
            edge_color = community_colors[match(from, node_data$id)])
 
-  # Get back some citation details
-  data <- refs |> rename(id = cited_id) |> select(id, cited_title, authors, cited_year, sourcetitle)
-  node_data <- node_data |> left_join(data, by = "id")
-  node_data <- node_data |> mutate(info = paste0(authors, ", ", cited_year, ", ", cited_title, ", ", sourcetitle)) |> distinct()
+ # # Get back some citation details
+ # data <- refs |> rename(id = cited_id) |> select(id, cited_title, authors, cited_year, sourcetitle)
+  #node_data <- node_data |> left_join(data, by = "id")
+ # node_data <- node_data |> mutate(info = paste0(authors, ", ", cited_year, ", ", cited_title, ", ", sourcetitle)) |> distinct()
 
-  list(nodes = node_data, edges = edge_data)
+  #list(nodes = node_data, edges = edge_data)
 }
 
 
