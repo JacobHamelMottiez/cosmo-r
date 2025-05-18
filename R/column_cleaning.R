@@ -33,8 +33,3 @@ reformat_references <- function(references) {
   return(references)
 }
 
-library(tidyverse)
-data <- read_csv("data/gpt_articles_dataset.csv")
-save(data, file = "data/gpt_articles_dataset.RData")
-
-getwd()

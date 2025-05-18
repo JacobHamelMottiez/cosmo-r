@@ -19,18 +19,20 @@
 #' @param refs Data frame of references
 #' @return An igraph object representing the cocitation network
 #' @export
-build_cocitation_network <- function(refs) {
-  library(igraph)
 
+
+build_cocitation_network <- function(refs, min_n) {
   refs <- refs |> dplyr::group_by(cited_id) |> dplyr::add_count(cited_id) |> dplyr::ungroup()
-  refs <- refs |> dplyr::filter(n > 5) |> dplyr::distinct()
+  print(min(refs$n))
+
+  refs <- refs |> dplyr::filter(n > min_n) |> dplyr::distinct()
 
   incidence_matrix <- table(refs$citing_id, refs$cited_id)
   cocitation_matrix <- t(incidence_matrix) %*% incidence_matrix
 
   cocitation_df <- as.data.frame(as.table(cocitation_matrix))
   colnames(cocitation_df) <- c("cited_id_1", "cited_id_2", "weight")
-  cocitation_df <- cocitation_df |> dplyr::filter(cited_id_1 != cited_id_2 & weight > 5)
+  cocitation_df <- cocitation_df |> dplyr::filter(cited_id_1 != cited_id_2 & weight > min_n)
 
   graph_from_data_frame(cocitation_df, directed = FALSE)
 }
@@ -41,10 +43,10 @@ build_cocitation_network <- function(refs) {
 #' @param refs Original reference data to merge back citation details
 #' @return A list with node and edge data including Louvain communities and colors
 #' @export
+
 extract_network_data <- function(g, refs, palette_func = viridis::viridis, palette_option = "A") {
   library(dplyr)
   library(igraph)
-
 
   E(g)$weight <- E(g)$weight^3
   louvain <- cluster_louvain(g, resolution = 1)
