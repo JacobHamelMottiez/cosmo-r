@@ -22,6 +22,11 @@
 
 
 build_cocitation_network <- function(refs, min_n) {
+
+  refs <- cosmoR::reformat_references(refs)
+  refs <- clean_references_fct(refs)
+
+
   refs <- refs |> dplyr::group_by(cited_id) |> dplyr::add_count(cited_id) |> dplyr::ungroup()
   print(min(refs$n))
 
